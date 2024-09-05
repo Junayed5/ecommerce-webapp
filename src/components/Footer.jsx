@@ -7,7 +7,7 @@ import { SlSocialLinkedin } from "react-icons/sl";
 const Footer = () => {
   return (
     <div className="bg-black">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 pt-20 pb-28 border-b-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 pt-20 pb-28">
         <img src="Logo (2).png" alt="" />
         <div className="flex-none md:flex gap-x-[120px]">
           <div>
@@ -42,6 +42,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <hr className="max-w-7xl mx-auto border-gray-400"/>
 
       <div className="max-w-7xl mx-auto py-10 flex justify-between">
         <div className="flex gap-3">

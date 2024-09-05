@@ -1,17 +1,16 @@
-import './App.css'
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
-import Products from './components/Products'
+import "./App.css";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Cart from "./pages/Cart";
 
 function App() {
-
   return (
     <>
-     <Navbar/>
-     <Products/>
-     <Footer/>
+      <Navbar />
+      <Cart />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
