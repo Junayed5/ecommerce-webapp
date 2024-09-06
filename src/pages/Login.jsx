@@ -5,40 +5,14 @@ const Login = () => {
     <div className="flex">
       <div className="w-2/3 h-screen bg-white flex justify-center items-center">
         <div className="w-[500px] p-6 bg-[#fafafa] rounded-md">
-          <div className="text-center">
-            <h3 className="font-semibold text-2xl">Welcome To</h3>
-            <h1 className="text-[40px] font-bold ">
-              Furni<span className="text-[#1e99f5]">Flex</span>
-            </h1>
+          <div>
+            <h3 className="font-semibold text-2xl">Welcome Back</h3>
             <p className="text-[#707070]">
-              Signup for purchase your desire products
+              Enter your Credentials to access your account
             </p>
           </div>
 
           <form action="">
-            <div className="flex gap-x-[14px]">
-              <div className=" h-[52px] w-56 bg-white border rounded-md pl-3 my-4">
-                <label
-                  htmlFor=""
-                  className="text-xs text-[#707070] font-normal"
-                >
-                  First Name
-                </label>
-                <br />
-                <input className="border-none w-full" type="text" />
-              </div>
-              <div className=" h-[52px] w-56 bg-white border rounded-md pl-3 my-4">
-                <label
-                  htmlFor=""
-                  className="text-xs text-[#707070] font-normal"
-                >
-                  Last Name
-                </label>
-                <br />
-                <input className="border-none w-full" type="text" />
-              </div>
-            </div>
-
             <div className=" h-[52px] w-[452px] bg-white border rounded-md pl-3 my-4">
               <label htmlFor="" className="text-xs text-[#707070] font-normal">
                 Email Address
@@ -65,7 +39,7 @@ const Login = () => {
             <input
               className="h-14 w-[452px] rounded-md bg-black text-white font-semibold"
               type="submit"
-              value="Signup"
+              value="Sign In"
             />
           </form>
 
@@ -142,7 +116,7 @@ const Login = () => {
 
           <div>
             <p className="text-sm font-medium text-center py-4 ">
-              Have an account? Sign In
+              Have an account? Sign Up
             </p>
           </div>
         </div>

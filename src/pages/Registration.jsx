@@ -65,7 +65,7 @@ const Registration = () => {
             <input
               className="h-14 w-[452px] rounded-md bg-black text-white font-semibold"
               type="submit"
-              value="Signup"
+              value="Sign Up"
             />
           </form>
 
