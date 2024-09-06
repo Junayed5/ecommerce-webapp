@@ -1,6 +1,22 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../firebase/firebase.config";
 
 const Login = () => {
+  const handleUserLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInWithEmailAndPassword(auth, email, password).then((user) => {
+      const data = user?.user?.email;
+      if (data) {
+        navigate("/home");
+      }
+    });
+  };
+
   return (
     <div className="flex">
       <div className="w-2/3 h-screen bg-white flex justify-center items-center">
@@ -12,20 +28,24 @@ const Login = () => {
             </p>
           </div>
 
-          <form action="">
+          <form action="" onSubmit={handleUserLogin}>
             <div className=" h-[52px] w-[452px] bg-white border rounded-md pl-3 my-4">
               <label htmlFor="" className="text-xs text-[#707070] font-normal">
                 Email Address
               </label>
               <br />
-              <input className="border-none w-full" type="text" />
+              <input className="border-none w-full" name="email" type="text" />
             </div>
             <div className=" h-[52px] w-[452px] bg-white border rounded-md pl-3 my-4">
               <label htmlFor="" className="text-xs text-[#707070] font-normal">
                 Password
               </label>
               <br />
-              <input className="border-none w-full" type="password" />
+              <input
+                className="border-none w-full"
+                name="password"
+                type="password"
+              />
             </div>
 
             <div className="">
@@ -116,7 +136,7 @@ const Login = () => {
 
           <div>
             <p className="text-sm font-medium text-center py-4 ">
-              Have an account? Sign Up
+              Have an account? <Link to={"/"}>Sign Up</Link>
             </p>
           </div>
         </div>

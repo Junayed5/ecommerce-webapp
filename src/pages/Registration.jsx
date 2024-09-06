@@ -1,6 +1,30 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../firebase/firebase.config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Registration = () => {
+  const navigate = useNavigate();
+
+  console.log("user",user?.email)
+ 
+  const handleUserRegister = async (e) => {
+    e.preventDefault();
+    const firstName = e.target.firstName.value;
+    const lastName = e.target.lastName.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    createUserWithEmailAndPassword(auth, email, password).then((user) => {
+      const data = user.user.email;
+      if (data) {
+        navigate('/home')
+      }
+    })
+  };
+
+
+
   return (
     <div className="flex">
       <div className="w-2/3 h-screen bg-white flex justify-center items-center">
@@ -15,7 +39,7 @@ const Registration = () => {
             </p>
           </div>
 
-          <form action="">
+          <form action="" onSubmit={handleUserRegister}>
             <div className="flex gap-x-[14px]">
               <div className=" h-[52px] w-56 bg-white border rounded-md pl-3 my-4">
                 <label
@@ -25,7 +49,11 @@ const Registration = () => {
                   First Name
                 </label>
                 <br />
-                <input className="border-none w-full" type="text" />
+                <input
+                  className="border-none w-full"
+                  name="firstName"
+                  type="text"
+                />
               </div>
               <div className=" h-[52px] w-56 bg-white border rounded-md pl-3 my-4">
                 <label
@@ -35,7 +63,11 @@ const Registration = () => {
                   Last Name
                 </label>
                 <br />
-                <input className="border-none w-full" type="text" />
+                <input
+                  className="border-none w-full"
+                  name="lastName"
+                  type="text"
+                />
               </div>
             </div>
 
@@ -44,14 +76,18 @@ const Registration = () => {
                 Email Address
               </label>
               <br />
-              <input className="border-none w-full" type="text" />
+              <input className="border-none w-full" name="email" type="text" />
             </div>
             <div className=" h-[52px] w-[452px] bg-white border rounded-md pl-3 my-4">
               <label htmlFor="" className="text-xs text-[#707070] font-normal">
                 Password
               </label>
               <br />
-              <input className="border-none w-full" type="password" />
+              <input
+                className="border-none w-full"
+                name="password"
+                type="password"
+              />
             </div>
 
             <div className="">
@@ -141,7 +177,9 @@ const Registration = () => {
           </div>
 
           <div>
-            <p className="text-sm font-medium text-center py-4 ">Have an account?  Sign In</p>
+            <p className="text-sm font-medium text-center py-4 ">
+              Have an account? <Link to={"/login"}>Sign In</Link>
+            </p>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,9 +9,9 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <a href="/" className="text-2xl font-bold text-gray-800">
+          <Link to="/home" className="text-2xl font-bold text-gray-800">
            <img src="Logo.png" alt="" />
-          </a>
+          </Link>
         </div>
 
         {/* Menu Items (hidden on small screens) */}
@@ -35,14 +36,16 @@ const Navbar = () => {
         {/* Cart and User Profile */}
         <div className="flex items-center space-x-6">
           {/* Cart Icon */}
-          <a href="#cart" className="text-gray-600 hover:text-gray-800">
+          <Link to="#cart" className="text-gray-600 hover:text-gray-800">
             <FaShoppingCart size={24} />
-          </a>
+          </Link>
 
           {/* User Profile Icon */}
           <a href="#profile" className="text-gray-600 hover:text-gray-800">
             <MdAccountCircle size={28} />
           </a>
+
+          <a href=""></a>
         </div>
       </div>
 
