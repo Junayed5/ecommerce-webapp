@@ -1,6 +1,6 @@
 import React from "react";
 
-const Registration = () => {
+const Login = () => {
   return (
     <div className="flex">
       <div className="w-2/3 h-screen bg-white flex justify-center items-center">
@@ -141,7 +141,9 @@ const Registration = () => {
           </div>
 
           <div>
-            <p className="text-sm font-medium text-center py-4 ">Have an account?  Sign In</p>
+            <p className="text-sm font-medium text-center py-4 ">
+              Have an account? Sign In
+            </p>
           </div>
         </div>
       </div>
@@ -162,4 +164,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;
