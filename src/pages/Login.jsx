@@ -152,7 +152,7 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="hidden w-1/3 h-screen bg-[url('chair.png')] bg-no-repeat bg-right md:flex justify-center items-center">
+      <div className="hidden w-1/3 h-screen bg-[url('https://i.ibb.co.com/3yBVnfC/chair.png')] bg-no-repeat bg-right md:flex justify-center items-center">
         <div className="w-[415px]">
           <img className="w-fit mx-auto" src="icon.png" alt="" />
           <h1 className="text-[40px] text-center font-bold text-white">
