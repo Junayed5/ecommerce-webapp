@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase/firebase.config";
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const handleUserLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -13,6 +16,8 @@ const Login = () => {
       const data = user?.user?.email;
       if (data) {
         navigate("/home");
+      } else{
+        navigate('/')
       }
     });
   };

@@ -1,62 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../App";
 
 const Products = () => {
-  const products = [
-    {
-      name: "Recliner Chair Wood",
-      image: "Image.png",
-      discountPrice: 299.0,
-      price: 350.0,
-      discount: 30,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, iusto?",
-    },
-    {
-      name: "Recliner Chair Wood",
-      image: "Image.png",
-      discountPrice: 299.0,
-      price: 350.0,
-      discount: 30,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, iusto?",
-    },
-    {
-      name: "Recliner Chair Wood",
-      image: "Image.png",
-      discountPrice: 299.0,
-      price: 350.0,
-      discount: 30,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, iusto?",
-    },
-    {
-      name: "Recliner Chair Wood",
-      image: "Image.png",
-      discountPrice: 299.0,
-      price: 350.0,
-      discount: 30,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, iusto?",
-    },
-    {
-      name: "Recliner Chair Wood",
-      image: "Image.png",
-      discountPrice: 299.0,
-      price: 350.0,
-      discount: 30,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, iusto?",
-    },
-    {
-      name: "Recliner Chair Wood",
-      image: "Image.png",
-      discountPrice: 299.0,
-      price: 350.0,
-      discount: 30,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, iusto?",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const { cart, setCart } = useContext(Context);
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
+  useEffect(() => {
+    fetch("products.json")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto flex mt-20 mb-16">
@@ -77,7 +33,10 @@ const Products = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-14 pl-10">
         {products.map(
-          ({ name, image, price, discount, description, discountPrice }) => (
+          (
+            {id, name, image, price, discount, description, discountPrice },
+            index
+          ) => (
             <div className="h-[484px] w-[277px] border rounded-md p-4">
               <img src={image} alt="" />
               <div className="py-8">
@@ -96,7 +55,12 @@ const Products = () => {
                 </p>
               </div>
 
-              <button className="h-10 bg-black text-white w-full rounded-md">Add To Cart</button>
+              <button
+                onClick={() => addToCart({id, name, image, price })}
+                className="h-10 bg-black text-white w-full rounded-md"
+              >
+                Add To Cart
+              </button>
             </div>
           )
         )}

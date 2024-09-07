@@ -6,7 +6,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 const Registration = () => {
   const navigate = useNavigate();
 
-  console.log("user",user?.email)
  
   const handleUserRegister = async (e) => {
     e.preventDefault();
@@ -16,9 +15,12 @@ const Registration = () => {
     const password = e.target.password.value;
 
     createUserWithEmailAndPassword(auth, email, password).then((user) => {
-      const data = user.user.email;
+      const data = user?.user?.email;
+      console.log(data);
       if (data) {
         navigate('/home')
+      } else{
+        navigate('/')
       }
     })
   };
