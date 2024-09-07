@@ -13,12 +13,14 @@ export const Context = React.createContext();
 function App() {
 
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useState('');
 
   const state = {
     cart,
+    user,
+    setUser,
     setCart
   };
-
   useEffect(() => {
     console.log(state);
   }, [state]);

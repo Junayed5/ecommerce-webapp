@@ -1,7 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase/firebase.config";
+import { Context } from "../App";
 
 const Login = () => {
 
@@ -15,9 +16,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password).then((user) => {
       const data = user?.user?.email;
       if (data) {
-        navigate("/home");
-      } else{
-        navigate('/')
+        navigate("/");
       }
     });
   };

@@ -5,20 +5,29 @@ import Home from "../pages/Home";
 import Main from "../layout/Main";
 import Products from "../pages/Products";
 import Cart from "../pages/Cart";
+import RequireAuth from "../authentication/RequireAuth";
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/register",
         element : <Registration/>,
     },
     {
-        path: "login",
+        path: "/login",
         element : <Login/>
     },
     {
         path: "/",
-        element: <Main/>,
+        element: (
+            <RequireAuth>
+                <Main/>
+            </RequireAuth>
+        ),
         children: [
+            {
+                path: "/",
+                element: <Products/>
+            },
             {
                 path: "home",
                 element: <Products/>

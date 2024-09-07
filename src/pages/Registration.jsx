@@ -18,8 +18,6 @@ const Registration = () => {
       const data = user?.user?.email;
       console.log(data);
       if (data) {
-        navigate('/home')
-      } else{
         navigate('/')
       }
     })
