@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import router from "./router/router";
 import React, { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 export const Context = React.createContext();
 
@@ -29,6 +30,7 @@ function App() {
     <>
       <Context.Provider value={state}>
         <RouterProvider router={router} />
+        <Toaster />
       </Context.Provider>
     </>
   );

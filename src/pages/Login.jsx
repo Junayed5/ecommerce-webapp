@@ -1,12 +1,14 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase/firebase.config";
 import { Context } from "../App";
+import { GoogleAuthProvider } from "firebase/auth/web-extension";
+import toast from "react-hot-toast";
 
 const Login = () => {
-
   const navigate = useNavigate();
+  const provider = new GoogleAuthProvider();
 
   const handleUserLogin = async (e) => {
     e.preventDefault();
@@ -17,8 +19,9 @@ const Login = () => {
       const data = user?.user?.email;
       if (data) {
         navigate("/");
+        toast.success('Login Success:)')
       }
-    });
+    }).catch((err) => toast.error(err?.message));
   };
 
   return (
@@ -74,7 +77,10 @@ const Login = () => {
           </div>
 
           <div className="flex gap-5">
-            <button className="flex justify-center items-center gap-2 h-[52px] w-[218px] text-sm font-semibold border rounded-md">
+            <button
+              onClick={() => signInWithPopup(auth, provider)}
+              className="flex justify-center items-center gap-2 h-[52px] w-[218px] text-sm font-semibold border rounded-md"
+            >
               <svg
                 width="24"
                 height="25"
@@ -140,13 +146,13 @@ const Login = () => {
 
           <div>
             <p className="text-sm font-medium text-center py-4 ">
-              Have an account? <Link to={"/"}>Sign Up</Link>
+              Have an account? <Link className="text-[#1e99f5]" to={"/"}>Sign Up</Link>
             </p>
           </div>
         </div>
       </div>
 
-      <div className="w-1/3 h-screen bg-[url('chair.png')] bg-no-repeat bg-right flex justify-center items-center">
+      <div className="hidden w-1/3 h-screen bg-[url('chair.png')] bg-no-repeat bg-right md:flex justify-center items-center">
         <div className="w-[415px]">
           <img className="w-fit mx-auto" src="icon.png" alt="" />
           <h1 className="text-[40px] text-center font-bold text-white">

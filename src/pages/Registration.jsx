@@ -1,12 +1,17 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase/firebase.config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import toast from "react-hot-toast";
 
 const Registration = () => {
   const navigate = useNavigate();
+  const provider = new GoogleAuthProvider();
 
- 
   const handleUserRegister = async (e) => {
     e.preventDefault();
     const firstName = e.target.firstName.value;
@@ -18,12 +23,11 @@ const Registration = () => {
       const data = user?.user?.email;
       console.log(data);
       if (data) {
-        navigate('/')
+        navigate("/");
+        toast.success('Welcome')
       }
-    })
+    }).catch((err) => toast.error(err?.message));
   };
-
-
 
   return (
     <div className="flex">
@@ -112,7 +116,10 @@ const Registration = () => {
           </div>
 
           <div className="flex gap-5">
-            <button className="flex justify-center items-center gap-2 h-[52px] w-[218px] text-sm font-semibold border rounded-md">
+            <button
+              onClick={() => signInWithPopup(auth, provider)}
+              className="flex justify-center items-center gap-2 h-[52px] w-[218px] text-sm font-semibold border rounded-md"
+            >
               <svg
                 width="24"
                 height="25"
@@ -178,13 +185,13 @@ const Registration = () => {
 
           <div>
             <p className="text-sm font-medium text-center py-4 ">
-              Have an account? <Link to={"/login"}>Sign In</Link>
+              Have an account? <Link className="text-[#1e99f5]" to={"/login"}>Sign In</Link>
             </p>
           </div>
         </div>
       </div>
 
-      <div className="w-1/3 h-screen bg-[url('chair.png')] bg-no-repeat bg-right flex justify-center items-center">
+      <div className="hidden w-1/3 h-screen bg-[url('chair.png')] bg-no-repeat bg-right md:flex justify-center items-center">
         <div className="w-[415px]">
           <img className="w-fit mx-auto" src="icon.png" alt="" />
           <h1 className="text-[40px] text-center font-bold text-white">

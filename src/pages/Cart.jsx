@@ -18,14 +18,14 @@ const Cart = () => {
   }, 0);
 
   return (
-    <div className="max-w-7xl mx-auto pt-5 flex gap-x-20">
+    <div className="max-w-7xl mx-auto pt-5 flex-none md:flex md:gap-x-20">
       <div>
         <div>
           <h3 className="text-2xl font-semibold ">An overview of your order</h3>
         </div>
 
         {cart.length === 0 ? (
-          <div className="bg-[#fafafa] h-60 w-[840px] rounded-md mt-10 mb-24 flex justify-center items-center">
+          <div className="bg-[#fafafa] h-60 w-fit md:w-[840px] rounded-md mt-10 mb-24 flex justify-center items-center">
             <div>
               <h3 className="text-2xl font-semibold mb-5">
                 Your Cart Is Currently Empty

@@ -26,12 +26,12 @@ const Navbar = () => {
 
         {/* Menu Items (hidden on small screens) */}
         <div className="hidden md:flex space-x-8">
-          <a
-            href="#home"
+          <Link
+            to="/home"
             className="text-gray-600 hover:text-gray-800 px-3 py-1 rounded-md hover:bg-[#f8f8f8] font-semibold"
           >
             Home
-          </a>
+          </Link>
           <a
             href="#about"
             className="text-gray-600 hover:text-gray-800 px-3 py-1 rounded-md hover:bg-[#f8f8f8] font-semibold"

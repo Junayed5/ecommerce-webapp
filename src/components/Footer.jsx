@@ -52,7 +52,7 @@ const Footer = () => {
           <SlSocialLinkedin className="text-white size-5" />
         </div>
 
-        <div className="text-[#81859f] text-xl flex gap-6">
+        <div className="text-[#81859f] text-xl flex-none md:flex md:gap-6">
           <p>March22 Recap</p>
           <p>Privacy Policy</p>
           <p>General Terms</p>
