@@ -1,19 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { Context } from "../App";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart } = useContext(Context);
-  let init = 0;
-  // const add = cart?.map(c => init += c?.price * )
-  // console.log(add);
+  const { cart, setCart } = useContext(Context);
 
-  const totalPrice = cart.reduce((accumulator, currentValue) => {
+  const removeFromCart = (item) => {
+    const newCart = cart?.filter((product) => product?.id != item?.id);
+    setCart(newCart);
+  };
+
+  let count = 1;
+
+  const totalPrice = cart?.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.price;
   }, 0);
-
-  console.log(totalPrice);
 
   return (
     <div className="max-w-7xl mx-auto pt-5 flex gap-x-20">
@@ -38,21 +40,32 @@ const Cart = () => {
           </div>
         ) : (
           <div className="bg-[#fafafa] rounded-md mt-10 mb-24">
-            {cart?.map(({ image, name, price }) => (
+            {cart?.map((product) => (
               <div className="flex justify-between w-[840px] h-40 border-b py-6 px-6">
                 <div className="flex">
                   <div className="h-11 w-[72px] border rounded-md flex justify-between items-center mt-7 mr-2 px-3 py-3">
-                    <button className="text-[#cfcfcf]">-</button>
-                    <p>1</p>
-                    <button className="text-[#cfcfcf]">+</button>
+                    <button onClick={count - 1} className="text-[#cfcfcf]">
+                      -
+                    </button>
+                    <p>{product?.quantity}</p>
+                    <button onClick={count + 1} className="text-[#cfcfcf]">
+                      +
+                    </button>
                   </div>
-                  <img className="size-[88px]" src={image} alt="" />
-                  <p className="font-bold pl-4">{name}</p>
+                  <img
+                    className="size-[88px] bg-[#f2f2f2] rounded-md"
+                    src={product?.image}
+                    alt=""
+                  />
+                  <p className="font-bold pl-4">{product?.name}</p>
                 </div>
                 <div className="relative">
-                  <IoCloseOutline className="size-5 text-[#939393]" />
+                  <IoCloseOutline
+                    onClick={() => removeFromCart(product)}
+                    className="size-5 text-[#939393]"
+                  />
                   <p className="absolute bottom-0 right-1 text-xl font-semibold">
-                    €{price}.00
+                    €{product?.price}.00
                   </p>
                 </div>
               </div>
@@ -69,7 +82,9 @@ const Cart = () => {
         <div className="px-6 w-96 bg-[#fafafa] border rounded-md mt-10">
           <div className="flex justify-between py-3">
             <p className="text-[#656565] text-xl">Subtotal</p>
-            <p className="text-xl font-medium text-[#656565]">€ {totalPrice}.00</p>
+            <p className="text-xl font-medium text-[#656565]">
+              € {totalPrice}.00
+            </p>
           </div>
           <div className="flex justify-between py-3">
             <p className="text-[#656565] text-xl">Shipping</p>
@@ -84,7 +99,9 @@ const Cart = () => {
 
           <div className="flex justify-between py-5">
             <p className="text-[#656565] text-2xl font-semibold">Total</p>
-            <p className="text-2xl font-semibold text-[#0e0e0e]">€ {totalPrice}.00</p>
+            <p className="text-2xl font-semibold text-[#0e0e0e]">
+              € {totalPrice}.00
+            </p>
           </div>
         </div>
 

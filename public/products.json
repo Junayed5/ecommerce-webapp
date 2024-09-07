@@ -2,7 +2,8 @@
   {
     "id": 1,
     "name": "Recliner Chair Wood",
-    "image": "Image.png",
+    "image": "chair1.png",
+    "quantity": 1,
     "discountPrice": 299.0,
     "price": 350.0,
     "discount": 30,
@@ -11,7 +12,8 @@
   {
     "id": 2,
     "name": "Recliner Chair Wood",
-    "image": "Image.png",
+    "image": "chair2.png",
+    "quantity": 1,
     "discountPrice": 299.0,
     "price": 350.0,
     "discount": 30,
@@ -20,7 +22,8 @@
   {
     "id": 3,
     "name": "Recliner Chair Wood",
-    "image": "Image.png",
+    "image": "chair3.png",
+    "quantity": 1,
     "discountPrice": 299.0,
     "price": 350.0,
     "discount": 30,
@@ -29,7 +32,8 @@
   {
     "id": 4,
     "name": "Recliner Chair Wood",
-    "image": "Image.png",
+    "image": "chair4.png",
+    "quantity": 1,
     "discountPrice": 299.0,
     "price": 350.0,
     "discount": 30,
@@ -38,7 +42,8 @@
   {
     "id": 5,
     "name": "Recliner Chair Wood",
-    "image": "Image.png",
+    "image": "chair5.png",
+    "quantity": 1,
     "discountPrice": 299.0,
     "price": 350.0,
     "discount": 30,
@@ -47,7 +52,8 @@
   {
     "id": 5,
     "name": "Recliner Chair Wood",
-    "image": "Image.png",
+    "image": "chair6.png",
+    "quantity": 1,
     "discountPrice": 299.0,
     "price": 350.0,
     "discount": 30,

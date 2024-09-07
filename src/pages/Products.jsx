@@ -5,6 +5,9 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const { cart, setCart } = useContext(Context);
   const addToCart = (item) => {
+    // let sameProduct = cart?.find(product => product?.id === item?.id);
+    // const newCart = cart?.filter(product => product?.id !== item?.id);
+    // sameProduct?.quantity = sameProduct?.quantity +1 ;
     setCart([...cart, item]);
   };
 
@@ -34,11 +37,11 @@ const Products = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-14 pl-10">
         {products.map(
           (
-            {id, name, image, price, discount, description, discountPrice },
+            {id, name, image, price, discount, description, discountPrice, quantity },
             index
           ) => (
             <div className="h-[484px] w-[277px] border rounded-md p-4">
-              <img src={image} alt="" />
+              <img className="bg-[#f2f2f2] p-5 rounded-md" src={image} alt="" />
               <div className="py-8">
                 <p className="text-xl font-semibold ">{name}</p>
                 <div className="flex gap-2 py-4">
@@ -56,7 +59,7 @@ const Products = () => {
               </div>
 
               <button
-                onClick={() => addToCart({id, name, image, price })}
+                onClick={() => addToCart({id, name, image, price, quantity})}
                 className="h-10 bg-black text-white w-full rounded-md"
               >
                 Add To Cart
